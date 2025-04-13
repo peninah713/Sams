@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sam's Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background-color: #fefefe;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: url('your-background-image.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 0 20px;
+    }
+    header h1 {
+      font-size: 3rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    nav {
+      background: #000;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .services, .about, .portfolio, .contact, .location {
+      text-align: center;
+    }
+    .services h2, .about h2, .portfolio h2, .contact h2, .location h2 {
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: #000;
+    }
+    .services ul {
+      list-style: none;
+      padding: 0;
+    }
+    .services li {
+      margin: 1rem 0;
+      font-size: 1.2rem;
+    }
+    .portfolio img {
+      width: 100%;
+      max-width: 300px;
+      margin: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    form button {
+      background: #000;
+      color: white;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      background-color: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 0.7rem 1.2rem;
+      border-radius: 30px;
+      margin-top: 1rem;
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+    .whatsapp-btn img {
+      width: 24px;
+      margin-right: 10px;
+    }
+    .whatsapp-btn:hover {
+      background-color: #1ebc59;
+    }
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      padding: 12px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+    .floating-whatsapp img {
+      width: 24px;
+      height: 24px;
+    }
+    footer {
+      background: #000;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+    <a href="#location">Location</a>
+  </nav>
+
+  <header>
+    <h1>Welcome to Sam's Studio - Capturing Memories Beautifully</h1>
+  </header>
+
+  <section class="services" id="services" data-aos="fade-up">
+    <h2>Our Services</h2>
+    <ul>
+      <li>Wedding Photography</li>
+      <li>Studio Portraits</li>
+      <li>Baby & Family Shoots</li>
+      <li>Event Coverage</li>
+      <li>Photo Editing & Retouching</li>
+    </ul>
+  </section>
+
+  <section class="about" id="about" data-aos="fade-up">
+    <h2>About Us</h2>
+    <p>Sam's Studio is passionate about turning your special moments into everlasting memories. Based in Kasarani, Nairobi, we bring out the best in every smile, every glance, and every celebration.</p>
+  </section>
+
+  <section class="portfolio" id="portfolio" data-aos="fade-up">
+    <h2>Our Work</h2>
+    <p>Take a look at some of our favorite shots. Each tells a story.</p>
+    <img src="your-image1.jpg" alt="Sample 1">
+    <img src="your-image2.jpg" alt="Sample 2">
+    <img src="your-image3.jpg" alt="Sample 3">
+  </section>
+
+  <section class="contact" id="contact" data-aos="fade-up">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <a class="whatsapp-btn" href="https://wa.me/254712345678" target="_blank">
+      <img src="https://img.icons8.com/ios-filled/50/25D366/whatsapp--v1.png" alt="WhatsApp" />
+      Book Now via WhatsApp
+    </a>
+  </section>
+
+  <section class="location" id="location" data-aos="fade-up">
+    <h2>Where to Find Us</h2>
+    <p>📍 We are located in Nairobi, Kasarani. Visit us or call to book a session today!</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Sam's Studio. All rights reserved.</p>
+  </footer>
+
+  <a href="https://wa.me/254712345678" class="floating-whatsapp" target="_blank" title="Chat with us">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp--v1.png" alt="WhatsApp Chat" />
+  </a>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>
