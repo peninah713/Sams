@@ -14,15 +14,29 @@
     body {
       font-family: 'Segoe UI', sans-serif;
       line-height: 1.6;
-      background-color: #f7f7f7;
+      background-color: #f4f4f4;
       color: #333;
     }
 
     header {
-      background: #111;
+      background: url("background.jpg") no-repeat center center/cover;
       color: white;
       text-align: center;
-      padding: 3rem 1rem;
+      padding: 5rem 1rem;
+      position: relative;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    header h1, header p, nav {
+      position: relative;
+      z-index: 1;
     }
 
     header h1 {
@@ -72,7 +86,7 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       width: 280px;
       text-align: center;
-      transition: 0.3s;
+      transition: transform 0.3s;
     }
 
     .service-card:hover {
@@ -91,11 +105,13 @@
       height: auto;
       border-radius: 8px;
       box-shadow: 0 5px 10px rgba(0,0,0,0.15);
-      transition: transform 0.3s;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      opacity: 0.9;
     }
 
     .gallery-container img:hover {
       transform: scale(1.05);
+      opacity: 1;
     }
 
     #about p {
@@ -116,6 +132,20 @@
       padding: 2rem;
       background: #111;
       color: #ccc;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      nav {
+        display: block;
+        margin-top: 1rem;
+      }
+      nav a {
+        display: inline-block;
+        margin: 8px;
+      }
     }
   </style>
 </head>
