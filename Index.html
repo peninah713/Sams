@@ -4,25 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sam's Studio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: url('/mnt/data/A_digital_photograph_captures_a_portrait_of_a_youn.png') no-repeat center center fixed;
+      background: url('pesh.jpeg') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
       overflow-x: hidden;
     }
     header {
       background-color: rgba(0, 0, 0, 0.7);
-      padding: 20px;
+      padding: 40px 20px;
       text-align: center;
     }
     header h1 {
       margin: 0;
-      font-size: 2.5rem;
+      font-size: 3rem;
+      font-family: 'Great Vibes', cursive;
+      animation: fadeInZoom 2s ease-in-out;
+      color: #FFD700;
+    }
+    @keyframes fadeInZoom {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
     nav {
       margin-top: 10px;
@@ -31,6 +43,11 @@
       color: #fff;
       margin: 0 15px;
       text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #FFD700;
     }
     .section {
       padding: 50px 20px;
@@ -38,8 +55,9 @@
     }
     .section h2 {
       text-align: center;
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin-bottom: 30px;
+      color: #FFD700;
     }
     .gallery {
       display: grid;
@@ -61,7 +79,16 @@
       max-width: 800px;
       margin: auto;
       text-align: center;
-      line-height: 1.6;
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+    ul.service-list {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+    }
+    ul.service-list li::before {
+      content: "📸 ";
     }
     .contact {
       text-align: center;
@@ -77,37 +104,17 @@
       text-decoration: none;
       font-weight: bold;
       margin-top: 20px;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.2s;
     }
     .whatsapp-btn:hover {
       background-color: #1ebe5d;
-    }
-    .social-icons {
-      text-align: center;
-      margin-top: 20px;
-    }
-    .social-icons a {
-      color: #fff;
-      margin: 0 10px;
-      font-size: 1.5rem;
-      transition: color 0.3s;
-    }
-    .social-icons a:hover {
-      color: #25D366;
+      transform: scale(1.05);
     }
     footer {
       text-align: center;
       padding: 20px;
       background-color: rgba(0, 0, 0, 0.8);
       font-size: 0.9rem;
-    }
-    .testimonial {
-      max-width: 600px;
-      margin: 40px auto;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      border-radius: 15px;
-      font-style: italic;
     }
   </style>
 </head>
@@ -125,14 +132,15 @@
   <section class="section" id="services">
     <h2>Our Services</h2>
     <div class="info">
-      <p>We offer professional photography services including:</p>
-      <ul>
+      <p>We offer top-notch photography services that freeze your best moments in time. Our offerings include:</p>
+      <ul class="service-list">
         <li>Wedding Photography</li>
-        <li>Portrait Photography</li>
-        <li>Events & Celebrations</li>
-        <li>Fashion Shoots</li>
-        <li>Product Photography</li>
+        <li>Portrait & Studio Shoots</li>
+        <li>Events & Concert Coverage</li>
+        <li>Fashion & Lifestyle Shoots</li>
+        <li>Product & Commercial Photography</li>
       </ul>
+      <p>Let us bring your vision to life through the lens.</p>
     </div>
   </section>
 
@@ -152,34 +160,23 @@
   <section class="section" id="about">
     <h2>About Us</h2>
     <div class="info">
-      <p>Welcome to Sam's Studio, your go-to destination for capturing timeless memories. We are based in <strong>Kasarani, Nairobi</strong> and specialize in both indoor and outdoor shoots.</p>
+      <p>Welcome to <strong>Sam's Studio</strong>, your creative partner in professional photography. Based in the vibrant neighborhood of <strong>Kasarani, Nairobi</strong>, we specialize in indoor and outdoor shoots that reflect authenticity and creativity.</p>
       <p><strong>Opening Days:</strong> Monday - Saturday</p>
       <p><strong>Working Hours:</strong> 8:00 AM - 6:00 PM</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>What Our Clients Say</h2>
-    <div class="testimonial">
-      "Sam's Studio exceeded my expectations! The photos were magical, and the team was professional and friendly throughout. Highly recommended!"<br><strong>- Sarah N.</strong>
+      <p>We’re passionate about capturing real emotions and turning them into lasting memories.</p>
     </div>
   </section>
 
   <section class="section" id="contact">
     <h2>Contact Us</h2>
     <div class="contact">
-      <p>Have questions or want to book a session?</p>
+      <p>Ready to make magic with us? Book a session or ask anything via WhatsApp!</p>
       <a class="whatsapp-btn" href="https://wa.me/254708680096" target="_blank">Book Now on WhatsApp</a>
-    </div>
-    <div class="social-icons">
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
     </div>
   </section>
 
   <footer>
-    &copy; 2025 Sam's Studio. All rights reserved.
+    &copy; 2025 Sam's Studio. All rights reserved. Designed with love.
   </footer>
 </body>
 </html>
