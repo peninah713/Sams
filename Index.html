@@ -3,209 +3,985 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sam's Studio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <title>Sam's Studio | Professional Photography</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <style>
+    :root {
+      --gold: #FFD700;
+      --gold-hover: #F7CE46;
+      --dark-gold: #D4AF37;
+      --black: #000;
+      --light-text: #fff;
+      --accent: #25D366;
+    }
+    
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: url('pesh.jpeg') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
+      background-color: #000;
+      color: var(--light-text);
       overflow-x: hidden;
+      line-height: 1.6;
     }
+    
+    /* Background overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('pesh.jpeg') no-repeat center center;
+      background-size: cover;
+      opacity: 0.4;
+      z-index: -1;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header & Navigation */
     header {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 40px 20px;
-      text-align: center;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      transition: background-color 0.4s ease;
+      padding: 20px 0;
     }
-    header h1 {
-      margin: 0;
-      font-size: 3rem;
+    
+    .header-scrolled {
+      background-color: rgba(0, 0, 0, 0.95);
+      box-shadow: 0 2px 20px rgba(255, 215, 0, 0.1);
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-text {
       font-family: 'Great Vibes', cursive;
-      animation: fadeInZoom 2s ease-in-out;
-      color: #FFD700;
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-left: 10px;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
     }
-    @keyframes fadeInZoom {
-      0% {
-        opacity: 0;
-        transform: scale(0.8);
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav ul li {
+      margin-left: 30px;
+    }
+    
+    nav ul li a {
+      color: var(--light-text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 8px 0;
+      position: relative;
+      transition: color 0.3s;
+    }
+    
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--gold);
+      transition: width 0.3s ease;
+    }
+    
+    nav ul li a:hover {
+      color: var(--gold);
+    }
+    
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+    
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+    
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: var(--light-text);
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      text-align: center;
+      z-index: 1;
+      max-width: 800px;
+    }
+    
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.5rem;
+      margin-bottom: 20px;
+      color: var(--light-text);
+      text-transform: uppercase;
+      letter-spacing: 5px;
+    }
+    
+    .hero h1 span {
+      display: block;
+      font-family: 'Great Vibes', cursive;
+      font-size: 6rem;
+      color: var(--gold);
+      text-transform: none;
+      margin-top: -20px;
+      letter-spacing: 0;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: var(--gold);
+      color: var(--black);
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      border: 2px solid var(--gold);
+    }
+    
+    .cta-button:hover {
+      background-color: transparent;
+      color: var(--gold);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+    }
+    
+    .scroll-down {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+      cursor: pointer;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
       }
-      100% {
-        opacity: 1;
-        transform: scale(1);
+      40% {
+        transform: translateY(-20px) translateX(-50%);
+      }
+      60% {
+        transform: translateY(-10px) translateX(-50%);
       }
     }
-    nav {
-      margin-top: 10px;
+    
+    /* Sections */
+    section {
+      padding: 100px 0;
+      position: relative;
     }
-    nav a {
+    
+    section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: -1;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+    }
+    
+    .section-title h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title h2::before,
+    .section-title h2::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 50px;
+      height: 1px;
+      background-color: var(--gold);
+    }
+    
+    .section-title h2::before {
+      left: -70px;
+    }
+    
+    .section-title h2::after {
+      right: -70px;
+    }
+    
+    .section-title p {
+      color: var(--light-text);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Services Section */
+    .services-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .service-card {
+      background-color: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(0, 0, 0, 0) 60%);
+      z-index: -1;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--light-text);
+    }
+    
+    .service-price {
+      font-size: 1.3rem;
+      color: var(--gold);
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    
+    /* Portfolio Section */
+    .portfolio {
+      background-color: rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+    
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 50px;
+    }
+    
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      height: 300px;
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    
+    .gallery-overlay h4 {
+      color: var(--light-text);
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+    
+    .gallery-overlay p {
+      color: var(--gold);
+      font-size: 0.9rem;
+    }
+    
+    /* About Section */
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 50px;
+      margin-top: 50px;
+    }
+    
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+    }
+    
+    .about-image img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .about-image::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+      z-index: -1;
+    }
+    
+    .about-content {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .about-content h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--gold);
+    }
+    
+    .about-content p {
+      margin-bottom: 20px;
+    }
+    
+    .opening-hours {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-left: 3px solid var(--gold);
+      border-radius: 5px;
+    }
+    
+    .opening-hours h4 {
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+    
+    .opening-hours p {
+      margin-bottom: 10px;
+    }
+    
+    /* Contact Section */
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      margin-top: 50px;
+    }
+    
+    .contact-info {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .contact-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--gold);
+    }
+    
+    .contact-info p {
+      margin-bottom: 30px;
+    }
+    
+    .contact-details {
+      margin-top: 30px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background-color: rgba(255, 215, 0, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      color: var(--gold);
+      font-size: 1.2rem;
+    }
+    
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: var(--accent);
       color: #fff;
-      margin: 0 15px;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+    }
+    
+    .whatsapp-btn:hover {
+      background-color: #1ebe5d;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(37, 211, 102, 0.4);
+    }
+    
+    .whatsapp-btn i {
+      margin-right: 10px;
+    }
+    
+    .download-brochure {
+      margin-top: 30px;
+    }
+    
+    .download-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--gold);
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s;
     }
-    nav a:hover {
-      color: #FFD700;
+    
+    .download-link:hover {
+      color: var(--gold-hover);
     }
-    .section {
-      padding: 50px 20px;
-      background-color: rgba(0, 0, 0, 0.6);
+    
+    .download-link i {
+      margin-right: 10px;
     }
-    .section h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-      color: #FFD700;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      padding: 0 20px;
-    }
-    .gallery img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 10px;
-      transition: transform 0.4s ease;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-    .info {
-      max-width: 800px;
-      margin: auto;
-      text-align: center;
-      line-height: 1.8;
-      font-size: 1.1rem;
-    }
-    ul.service-list {
-      list-style: none;
-      padding: 0;
-      text-align: center;
-    }
-    ul.service-list li::before {
-      content: "📸 ";
-    }
-    .contact {
-      text-align: center;
-      margin-top: 30px;
-    }
-    .whatsapp-btn {
-      display: inline-block;
-      padding: 15px 30px;
-      background-color: #25D366;
-      color: #fff;
-      border: none;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 20px;
-      transition: background 0.3s, transform 0.2s;
-    }
-    .whatsapp-btn:hover {
-      background-color: #1ebe5d;
-      transform: scale(1.05);
-    }
+    
+    /* Footer */
     footer {
-      text-align: center;
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 60px 0 20px;
+      position: relative;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-logo {
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .footer-logo h3 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+    
+    .footer-logo p {
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+    
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: var(--light-text);
+      transition: all 0.3s ease;
+    }
+    
+    .social-icons a:hover {
+      background-color: var(--gold);
+      color: var(--black);
+      transform: translateY(-3px);
+    }
+    
+    .footer-links {
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .footer-links h4 {
+      color: var(--light-text);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-links h4::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 30px;
+      height: 2px;
+      background-color: var(--gold);
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links ul li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links ul li a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
       font-size: 0.9rem;
     }
-    .download-brochure {
+    
+    .footer-links ul li a:hover {
+      color: var(--gold);
+    }
+    
+    .copyright {
       text-align: center;
-      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: #999;
     }
-    .download-brochure a {
-      color: #FFD700;
-      text-decoration: underline;
+    
+    /* Animations */
+    .reveal {
+      position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
     }
-    @media screen and (max-width: 600px) {
-      header h1 {
-        font-size: 2.2rem;
+    
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Responsive Design */
+    @media screen and (max-width: 990px) {
+      .header-content {
+        padding: 0 20px;
       }
-      .section h2 {
+      
+      .logo-text {
         font-size: 2rem;
       }
-      .info {
-        font-size: 1rem;
-        padding: 0 10px;
+      
+      .hero h1 {
+        font-size: 3.5rem;
       }
-      .gallery img {
-        height: 180px;
+      
+      .hero h1 span {
+        font-size: 4.5rem;
+      }
+      
+      .section-title h2::before,
+      .section-title h2::after {
+        width: 30px;
+      }
+      
+      .section-title h2::before {
+        left: -40px;
+      }
+      
+      .section-title h2::after {
+        right: -40px;
+      }
+    }
+    
+    @media screen and (max-width: 768px) {
+      .hamburger {
+        display: block;
+        z-index: 1001;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 60%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.95);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.5s ease;
+        z-index: 1000;
+      }
+      
+      .nav-active {
+        right: 0;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      nav ul li {
+        margin: 15px 0;
+        text-align: center;
+      }
+      
+      nav ul li a {
+        font-size: 1.2rem;
+      }
+      
+      .hamburger.active div:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+      }
+      
+      .hamburger.active div:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .hamburger.active div:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+      }
+      
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .hero h1 span {
+        font-size: 3.8rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+        padding: 0 20px;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .section-title h2::before,
+      .section-title h2::after {
+        display: none;
+      }
+      
+      .gallery-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+    }
+    
+    @media screen and (max-width: 480px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero h1 span {
+        font-size: 3rem;
+      }
+      
+      .service-card {
+        padding: 20px;
+      }
+      
+      .gallery-item {
+        height: 250px;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Sam's Studio</h1>
-    <nav>
-      <a href="#services">Services</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <header id="header">
+    <div class="header-content container">
+      <div class="logo">
+        <div class="logo-text">Sam's Studio</div>
+      </div>
+      <nav>
+        <div class="hamburger">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <section class="section" id="services">
-    <h2>Our Services</h2>
-    <div class="info">
-      <p>We offer top-notch photography services that freeze your best moments in time. Our offerings include:</p>
-      <ul class="service-list">
-        <li>Wedding Photography - <strong>Ksh 8,000</strong></li>
-        <li>Portrait & Studio Shoots - <strong>Ksh 3,000</strong></li>
-        <li>Events & Concert Coverage - <strong>Ksh 6,000</strong></li>
-        <li>Fashion & Lifestyle Shoots - <strong>Ksh 4,000</strong></li>
-        <li>Product & Commercial Photography - <strong>Ksh 5,000</strong></li>
-      </ul>
-      <p>Let us bring your vision to life through the lens.</p>
+  <section class="hero" id="hero">
+    <div class="hero-content animate__animated animate__fadeIn">
+      <h1 class="animate__animated animate__fadeInUp animate__delay-1s">Capture Your <span>Moments</span></h1>
+      <p class="animate__animated animate__fadeInUp animate__delay-1s">Professional photography services that freeze your best moments in time. Let us bring your vision to life through our lens.</p>
+      <a href="#contact" class="cta-button animate__animated animate__fadeInUp animate__delay-2s">Book Now</a>
+    </div>
+    <div class="scroll-down">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M19 12l-7 7-7-7"></path>
+      </svg>
     </div>
   </section>
 
-  <section class="section" id="portfolio">
-    <h2>Portfolio</h2>
-    <div class="gallery">
-      <img src="IMG_1121.jpg" alt="Gallery Image">
-      <img src="IMG_1169.jpg" alt="Gallery Image">
-      <img src="IMG_1357.jpg" alt="Gallery Image">
-      <img src="IMG_1414.jpg" alt="Gallery Image">
-      <img src="IMG_1416.jpg" alt="Gallery Image">
-      <img src="IMG_2309.jpg" alt="Gallery Image">
-      <img src="IMG_2322.jpg" alt="Gallery Image">
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>Our Services</h2>
+        <p>We offer a range of professional photography services tailored to your specific needs.</p>
+      </div>
+      
+      <div class="services-container">
+        <div class="service-card reveal">
+          <div class="service-icon">💍</div>
+          <h3>Wedding Photography</h3>
+          <p>Capturing the beauty and emotion of your special day with artistic compositions.</p>
+          <div class="service-price">Ksh 8,000</div>
+        </div>
+        
+        <div class="service-card reveal">
+          <div class="service-icon">👤</div>
+          <h3>Portrait & Studio</h3>
+          <p>Professional portraits that highlight your personality and style.</p>
+          <div class="service-price">Ksh 3,000</div>
+        </div>
+        
+        <div class="service-card reveal">
+          <div class="service-icon">🎭</div>
+          <h3>Events & Concerts</h3>
+          <p>Dynamic event coverage to immortalize memorable occasions.</p>
+          <div class="service-price">Ksh 6,000</div>
+        </div>
+        
+        <div class="service-card reveal">
+          <div class="service-icon">👗</div>
+          <h3>Fashion & Lifestyle</h3>
+          <p>Trendy and stylish shoots for fashion enthusiasts and models.</p>
+          <div class="service-price">Ksh 4,000</div>
+        </div>
+        
+        <div class="service-card reveal">
+          <div class="service-icon">📦</div>
+          <h3>Product & Commercial</h3>
+          <p>Eye-catching product photography to showcase your merchandise.</p>
+          <div class="service-price">Ksh 5,000</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section" id="about">
-    <h2>About Us</h2>
-    <div class="info">
-      <p>Welcome to <strong>Sam's Studio</strong>, your creative partner in professional photography. Based in the vibrant neighborhood of <strong>Kasarani, Nairobi</strong>, we specialize in indoor and outdoor shoots that reflect authenticity and creativity.</p>
-      <p><strong>Opening Days:</strong> Monday - Saturday</p>
-      <p><strong>Working Hours:</strong> 8:00 AM - 6:00 PM</p>
-      <p>We’re passionate about capturing real emotions and turning them into lasting memories.</p>
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>Portfolio</h2>
+        <p>Browse through our collection of stunning photography that showcases our expertise and unique style.</p>
+      </div>
+      
+      <div class="gallery-container">
+        <div class="gallery-item reveal">
+          <img src="IMG_1121.jpg" alt="Wedding Photography">
+          <div class="gallery-overlay">
+            <h4>Elegant Wedding</h4>
+            <p>Wedding Photography</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item reveal">
+          <img src="IMG_1169.jpg" alt="Portrait Photography">
+          <div class="gallery-overlay">
+            <h4>Professional Portrait</h4>
+            <p>Studio Session</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item reveal">
+          <img src="IMG_1357.jpg" alt="Fashion Photography">
+          <div class="gallery-overlay">
+            <h4>Fashion Editorial</h4>
+            <p>Fashion Shoot</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item reveal">
+          <img src="IMG_1414.jpg" alt="Event Photography">
+          <div class="gallery-overlay">
+            <h4>Concert Highlights</h4>
+            <p>Event Coverage</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item reveal">
+          <img src="IMG_1416.jpg" alt="Lifestyle Photography">
+          <div class="gallery-overlay">
+            <h4>Urban Style</h4>
+            <p>Lifestyle Session</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item reveal">
+          <img src="IMG_2309.jpg" alt="Product Photography">
+          <div class="gallery-overlay">
+            <h4>Premium Products</h4>
+            <p>Commercial Shoot</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section" id="contact">
-    <h2>Contact Us</h2>
-    <div class="contact">
-      <p>Ready to make magic with us? Book a session or ask anything via WhatsApp!</p>
-      <a class="whatsapp-btn" href="https://wa.me/254708680096" target="_blank">Book Now on WhatsApp</a>
-    </div>
-    <div class="download-brochure">
-      <p><a href="brochure.pdf" download>Download Our Brochure</a></p>
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>About Us</h2>
+        <p>Get to know the passion and expertise behind Sam's Studio.</p>
+      </div>
+      
+      <div class="about-container">
+        <div class="about-image reveal">
+          <img src="IMG_2322.jpg" alt="Sam's Studio Team">
+        </div>
+        
+        <div class="about-content reveal">
+          <h3>Your Creative Partner in Professional Photography</h3>
+          <p>Welcome to <strong>Sam's Studio</strong>, where we transform ordinary moments into extraordinary memories. Based in the vibrant neighborhood of <strong>Kasarani, Nairobi</strong>, we specialize in indoor and outdoor shoots that reflect authenticity and creativity.</p>
+          
+          <p>Our team of passionate photographers brings years of experience and a unique artistic vision to every project. We believe that every person and every moment has a story worth telling, and we're dedicated to capturing that narrative through our lens.</p>
+          
+          <div class="opening-hours">
+            <h4>Studio Hours</h4>
+            <p><strong>Opening Days:</strong> Monday - Saturday</p>
+            <p><strong>Working Hours:</strong> 8:00 AM - 6:00 PM</p>
+            <p>Available for on-location shoots by appointment.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <footer>
-    &copy; 2025 Sam's Studio. All rights reserved. Designed with love.
-  </footer>
-</body>
-</html>
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>Contact Us</h2>
+        <p>Ready to book a session? Get in touch with us today!</p>
+      </div>
+      
+      <div class="contact-container">
+        <div class="contact-info reveal">
+          <h3>Let's Create Magic Together</h3>
+          <p>Whether you
